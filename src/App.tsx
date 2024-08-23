@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './app.css'
 import Input from './components/Input'
 import {Task} from '../model/model'
+import TaskCard from './components/TaskCard'
 
 const App:React.FC = () => {
   const [task, setTask] = useState<string>("")
@@ -11,16 +12,18 @@ const App:React.FC = () => {
     e.preventDefault()
 
     if(task){
-      setTaskList([...taskList, {id:Date.now(), task, completed:false}])
+      setTaskList(prev=>[...prev, {id:Date.now(), task, completed:false}])
       setTask("");
+      console.log(taskList)
     }
-    console.log(taskList)
   }
-  console.log(task)
   return (
     <>
       <h1>To Do</h1>
       <Input task = {task} setTask = {setTask} handleAdd={handleAdd}/>
+      {taskList.map(task=>{
+        return (<TaskCard {...task}/>)
+      })}
     </>
   )
 }
