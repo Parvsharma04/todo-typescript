@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './app.css'
 import Input from './components/Input'
 import {Task} from '../model/model'
 import TaskCard from './components/TaskCard'
@@ -21,9 +20,11 @@ const App:React.FC = () => {
     <>
       <h1>To Do</h1>
       <Input task = {task} setTask = {setTask} handleAdd={handleAdd}/>
+      <div className='task-container bg-white p-5 flex flex-row flex-wrap gap-2'>
       {taskList.map(task=>{
         return (<TaskCard {...task}/>)
       })}
+      </div>
     </>
   )
 }

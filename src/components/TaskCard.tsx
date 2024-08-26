@@ -1,11 +1,13 @@
 import {Task} from '../../model/model'
 
-const TaskCard = ({id, task, completed}: Task) => {
+const TaskCard = ({_id, task, completed}: Task) => {
   return (
-    <div className="taskcard">
-      <p>{task}</p>
-      {!completed && return <p>NotDone</p>}
+    <>
+    <div className="taskcard border-white border-2 p-4">
+      <span>{task}</span>
+      {!completed && <span>NotDone</span>}
     </div>
+    </>
   )
 }
 
